@@ -7,7 +7,7 @@ var computerChoices = ["a", "b", "c"]
     var wins = 0;
     var losses = 0;
     var guesses_left = 9;
-    // var guesses_sofar = var userGuess;
+    var guesses_sofar = [];
 
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
@@ -29,6 +29,7 @@ var computerChoices = ["a", "b", "c"]
         }
         
         var html = 
+      
         "<p>Guess what letter I'm thinking of</p>" +
         "<p>Wins: " + wins + "</p>" +
         "<p>Losses: " + losses + "</p>" +
@@ -57,5 +58,5 @@ var computerChoices = ["a", "b", "c"]
         //   "<p>ties: " + ties + "</p>";
 
         // Set the inner HTML contents of the #game div to our html string
-        document.querySelector("#game").innerHTML = html;
+        document.querySelector("#score").innerHTML = html;
     }
