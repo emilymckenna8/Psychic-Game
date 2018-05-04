@@ -25,7 +25,7 @@ document.onkeyup = function(event) {
          } 
       else {losses++;}
         
-        
+      guesses_sofar.push(userGuess); 
         var html = 
       
         "<p>Guess what letter I'm thinking of</p>" +
