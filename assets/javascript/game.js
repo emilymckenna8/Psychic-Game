@@ -7,13 +7,29 @@ var wins = 0;
 var losses = 0;
 var guesses_left = 9;
 var guesses_sofar = [];
-      // Randomly chooses a choice from the array. This is the Computer's guess.
+var magicLetter = null;
+// Randomly chooses a choice from the array. This is the Computer's guess.
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-console.log(computerGuess);
+
+
+var updatemagicLetter = function() {
+  this.magicLetter = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
+};
+
+updatemagicLetter();
+
+
+//resets the score whenever user wins or loses and chooses a new computerGuess
+  var reset = function() {
+        
+        guesses_left = 9;
+        guesses_sofar = [];
+        updatemagicLetter();
+        console.log(magicLetter);
+  }
 
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
-
       // Determines which key was pressed.
       var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
       //decreased number of guesses left every time user presses key
@@ -21,16 +37,10 @@ document.onkeyup = function(event) {
       //pushes the userGuess to the score HTML
       guesses_sofar.push(userGuess); 
 
-    //resets the score whenever user wins or loses  
-      var reset = function() {
-        guesses_left = 9;
-        guesses_sofar = [];
-        wins=0;
-        losses=0;
-      }
+    
       // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number      
       if (guesses_left>0){
-        if (userGuess === computerGuess) {
+        if (userGuess === magicLetter) {
             wins++;
             alert("You're psychic!");
             reset()
